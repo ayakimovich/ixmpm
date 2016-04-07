@@ -10,9 +10,15 @@ macro "ixmpm" {
 	guiSeparator = "\n__________________________________________________\n "
 	version = "\n                                               v0.6. MIT license."
 	copyrightMessage = "                                 ImageXpress Micro Plate Montage \n                        (copyright) Artur Yakimovich 2011-"+year
-	
+	html = "<html>"
+     +"<h2>ImageXpress Micro Timelapse About</h2>"
+     +"<font size=+1>"
+     +"Please visit <a href='https://github.com/ayakimovich/ixmtimelapse'>https://github.com/ayakimovich/ixmtimelapse</a> For the up-to-date version, help or contributing<br><br>"
+     +"Copyright &copy; Artur Yakimovich 2011-"+year+"</font>"
+     +"</html>";
 	Dialog.create("ImageXpress Micro Plate Montage");
 		Dialog.addMessage(copyrightMessage+version+guiSeparator);
+		Dialog.addHelp(html);
 		Dialog.addNumber("First Wavelength:", 1);
 		Dialog.addNumber("Last Wavelength:", 2);
 		Dialog.addNumber("Site Number:", 3);
