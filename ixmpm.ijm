@@ -3,22 +3,27 @@
 // ImageJ Macro to create Plate montage from single IXM images
 //    (c)2011-2016 Artur Yakimovich, University of Zurich 
 //============================================================
-macro "IXMMP" {
+macro "ixmpm" {
 	//creating GUI
 	getDateAndTime(year, month, dayOfWeek, dayOfMonth, hour, minute, second, msec);
-	Dialog.create("ImageXpress Micro Plate Montage");
-	Dialog.addMessage("     ImageXpress Micro Plate Motage \n(copyright) Artur Yakimovich 2011-"+year+"\n                                  v0.5\n \n ");
-	Dialog.addNumber("First Wavelength:", 1);
-	Dialog.addNumber("Last Wavelength:", 2);
-	Dialog.addNumber("Site Number:", 3);
-	Dialog.addNumber("First Plate Column:", 1);
-	Dialog.addNumber("Last Plate Column:", 12);
-	Dialog.addNumber("Num of Time Points:", 1);
-	Dialog.addString("Image File Extension:", ".TIF");
-	labels = newArray("A", "B", "C", "D", "E", "F", "G", "H");
-	defaults = newArray(true,true,true,true,true,true,true,true);
-	Dialog.addCheckboxGroup(1,8,labels,defaults);
+	guiSpacer = "\n ";
+	guiSeparator = "\n__________________________________________________\n "
+	version = "\n                                               v0.6. MIT license."
+	copyrightMessage = "                                 ImageXpress Micro Plate Montage \n                        (copyright) Artur Yakimovich 2011-"+year
 	
+	Dialog.create("ImageXpress Micro Plate Montage");
+		Dialog.addMessage(copyrightMessage+version+guiSeparator);
+		Dialog.addNumber("First Wavelength:", 1);
+		Dialog.addNumber("Last Wavelength:", 2);
+		Dialog.addNumber("Site Number:", 3);
+		Dialog.addNumber("First Plate Column:", 1);
+		Dialog.addNumber("Last Plate Column:", 12);
+		Dialog.addNumber("Num of Time Points:", 1);
+		Dialog.addString("Image File Extension:", ".TIF");
+		labels = newArray("A", "B", "C", "D", "E", "F", "G", "H");
+		defaults = newArray(true,true,true,true,true,true,true,true);
+		Dialog.addCheckboxGroup(1,8,labels,defaults);
+		Dialog.addMessage(guiSeparator);
 	Dialog.show();
 	
 	//Retrieving parameters
