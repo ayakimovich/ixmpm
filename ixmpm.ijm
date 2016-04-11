@@ -3,7 +3,7 @@
 // ImageJ Macro to create Plate montage from single IXM images
 //    (c)2011-2016 Artur Yakimovich, University of Zurich 
 //============================================================
-macro "ixmpm" {
+//macro "ixmpm" {
 	//creating GUI
 	getDateAndTime(year, month, dayOfWeek, dayOfMonth, hour, minute, second, msec);
 	guiSpacer = "\n ";
@@ -73,9 +73,11 @@ macro "ixmpm" {
 				for(j=0; j<=lastPlateColumn-1; j++){
 					if(j<=9-firstPlateColumn){jNumber= "0"+j+firstPlateColumn;}
 					else{jNumber= j+firstPlateColumn;}
-					print (jNumber);
-					print (RowLetterArray[i]);
-					run("Image Sequence...", "open="+ReadPath+File.separator+"TimePoint_"+iTP+1+File.separator+" number=6913 starting=1 increment=1 scale=100 file=[] or=.*"+RowLetterArray[i]+jNumber+"_s"+site+"_w"+wavelength+extension+" sort");	
+					print(jNumber);
+					print(RowLetterArray[i]);
+					print(ReadPath+File.separator+"TimePoint_"+iTP+1+File.separator);
+					print(RowLetterArray[i]+jNumber+"_s"+site+"_w"+wavelength+extension);
+					run("Image Sequence...", "open=["+ReadPath+File.separator+"TimePoint_"+iTP+1+File.separator+"] number=6913 starting=1 increment=1 scale=100 file=(.*"+RowLetterArray[i]+jNumber+"_s"+site+"_w"+wavelength+extension+") sort");	
 					}
 				}
 	
@@ -100,4 +102,4 @@ macro "ixmpm" {
 		}
 	}
 	setBatchMode(false);
-}
+//}
